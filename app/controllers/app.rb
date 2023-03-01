@@ -38,4 +38,10 @@ class AppController < Sinatra::Base
     def not_found_response
         json_response(code: 404, data: { error: "You seem lost. That route does not exist." })
     end
+
+     # @api: 404 handler
+     not_found do
+        not_found_response
+     end
+    
 end
