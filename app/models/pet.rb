@@ -18,5 +18,8 @@ class Pet < ActiveRecord::Base
     def self.find_by_name_or_breed(search)
       where("name ILIKE ? OR breed ILIKE ?", "%#{search}%", "%#{search}%")
     end 
-  
+    
+    def update_pet_details(attributes)
+      update(attributes)
+    end 
 end
