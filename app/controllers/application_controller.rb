@@ -61,6 +61,20 @@ class ApplicationController < AppController
     rescue => e 
         { error: e.message}
     end 
+
+    delete '/delete/pets/:id' do 
+      begin
+          # remove = JSON.parse(request.body.read) 
+          pet = Pet.find(params[:id])
+          pet.destroy
+          "Deleted!"
+          status 204
+
+      rescue => e 
+          { error: e.message}
+      end 
+  end
+  
 end
 
 end
