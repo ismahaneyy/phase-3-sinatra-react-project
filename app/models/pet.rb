@@ -22,4 +22,8 @@ class Pet < ActiveRecord::Base
     def update_pet_details(attributes)
       update(attributes)
     end 
+
+    def remove_pet_details
+      destroy
+    end 
 end
