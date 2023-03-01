@@ -14,4 +14,9 @@ class Pet < ActiveRecord::Base
         }
       end 
     end 
+
+    def self.find_by_name_or_breed(search)
+      where("name ILIKE ? OR breed ILIKE ?", "%#{search}%", "%#{search}%")
+    end 
+  
 end
