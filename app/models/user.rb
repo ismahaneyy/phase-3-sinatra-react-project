@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
         return user if user&.authenticate(password)
     
         user.to_json 
-      end 
-  
+    end 
+    
+    def self.create_new_user(name, email, phone_number)
+      User.create(name: name, email: email, phone_number: phone_number)
+    end 
 end 
