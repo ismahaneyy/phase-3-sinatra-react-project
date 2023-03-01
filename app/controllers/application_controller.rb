@@ -14,4 +14,17 @@ class ApplicationController < AppController
     end
   end
 
+  post '/login' do
+    user = User. find_by (phone: params (:phone])
+  if user
+      if user. autheliticate(params [:password!])
+    { success: true, user: user }
+    else
+     { success: false, error: 'Incorrect password' }
+    end
+  else
+    { success: false, error: 'Phone number not found' }
+    end.to_json
+    end
+
 end
