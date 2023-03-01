@@ -1,7 +1,7 @@
 class AppController < Sinatra::Base
     configure do
         enable :cross_origin
-      end
+    end
     
       before do
         response.headers['Access-Control-Allow-Origin'] = '*'
@@ -21,10 +21,16 @@ class AppController < Sinatra::Base
         if data
           [ code, { data: data, message: status }.to_json ]
         end
-      end
+    end
 
       # @api: Format all common JSON error responses
     def error_response(code, e)
         json_response(code: code, data: { error: e.message })
-      end
+    end
+
+     # @views: Format the erb responses
+    def erb_response(file)
+        headers['Content-Type'] = 'text/html'
+        erb file
+    end
 end
