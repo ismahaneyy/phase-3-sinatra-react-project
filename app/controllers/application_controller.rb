@@ -27,4 +27,14 @@ class ApplicationController < AppController
     end.to_json
     end
 
+    post '/pets/create' do
+      begin
+          new_pet = Pet.create(JSON.parse(request.body.read))
+          json_response(code: 201, data: new_pet)
+      rescue => e 
+          json_response(code: 422, data: e.message)
+      end 
+  end
+
+
 end
