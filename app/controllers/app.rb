@@ -33,4 +33,9 @@ class AppController < Sinatra::Base
         headers['Content-Type'] = 'text/html'
         erb file
     end
+
+    # @helper: not found error formatter
+    def not_found_response
+        json_response(code: 404, data: { error: "You seem lost. That route does not exist." })
+    end
 end
