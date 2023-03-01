@@ -41,5 +41,15 @@ class ApplicationController < AppController
     user.pets.to_json 
   end
 
+  get '/pets' do
+    Pet.all.to_json
+  end
+
+  
+  post '/pets/search' do
+      body = JSON.parse(request.body.read)
+      pets = Pet.where('name LIKE ? OR breed LIKE ?', "%#{body['query']}%", "%#{body['query']}%")
+      pets.to_json
+  end 
 
 end
