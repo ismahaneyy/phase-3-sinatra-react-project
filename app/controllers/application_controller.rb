@@ -15,9 +15,9 @@ class ApplicationController < AppController
   end
 
   post '/login' do
-    user = User. find_by (phone: params (:phone])
+    user = User.find_by(phone: params[:phone])
   if user
-      if user. autheliticate(params [:password!])
+      if user.autheliticate(params[:password!])
     { success: true, user: user }
     else
      { success: false, error: 'Incorrect password' }
@@ -74,7 +74,7 @@ class ApplicationController < AppController
           { error: e.message}
       end 
   end
-  
+
 end
 
 end
