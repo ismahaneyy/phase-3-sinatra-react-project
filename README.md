@@ -5,6 +5,7 @@
 - Build a web basic API with Sinatra and Active Record to support a React
   frontend
 
+
 ## Introduction
 
 Congrats on getting through all the material for Phase 3! Now's the time to put
