@@ -52,4 +52,15 @@ class ApplicationController < AppController
       pets.to_json
   end 
 
+  put '/update/pets/:id' do
+    begin 
+        data = JSON.parse(request.body.read)
+        pet = Pet.find(params[:id])
+        pet.update(data)
+        pet.to_json
+    rescue => e 
+        { error: e.message}
+    end 
+end
+
 end
