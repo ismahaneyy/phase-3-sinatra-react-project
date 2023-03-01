@@ -4,5 +4,14 @@ class Pet < ActiveRecord::Base
     def personal_pets
       user.pets
     end 
-  
+   
+     def self.all_pets
+      all.map do |pet|
+        {
+          name: pet.name,
+          age: pet.age,
+          image: pet.image
+        }
+      end 
+    end 
 end
