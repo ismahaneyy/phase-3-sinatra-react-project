@@ -36,5 +36,10 @@ class ApplicationController < AppController
       end 
   end
 
+  get '/users/:user_id/pets' do
+    user = User.find(params[:user_id])
+    user.pets.to_json 
+  end
+
 
 end
