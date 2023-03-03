@@ -1,5 +1,5 @@
 class ApplicationController < AppController
-  set :default_content_type, 'application/json'
+  # set :default_content_type, 'application/json'
   
   post '/users' do
     user_data = JSON.parse(request.body.read)
