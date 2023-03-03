@@ -5,6 +5,6 @@ class CreatePets < ActiveRecord::Migration[7.0]
       t.string :breed
       t.string :image
       t.integer :age 
-    end 
+    end
   end
 end
