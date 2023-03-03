@@ -15,17 +15,19 @@ class ApplicationController < AppController
   end
 
   post '/login' do
-    user = User.find_by(phone: params[:phone])
-  if user
-      if user.autheliticate(params[:password!])
-    { success: true, user: user }
+    request.body.rewind
+    request_payload = JSON.parse(request.body.read)
+  
+    phone = request_payload['phone']
+    password = request_payload['password']
+  
+    user = User.find_by(phone: phone, password: password)
+    if user
+      { success: true, user: user }.to_json
     else
-     { success: false, error: 'Incorrect password' }
+      { success: false, error: 'Invalid credentials' }.to_json
     end
-  else
-    { success: false, error: 'Phone number not found' }
-    end.to_json
-    end
+  end
 
     post '/pets/create' do
       begin
@@ -62,18 +64,18 @@ class ApplicationController < AppController
         { error: e.message}
     end 
 
-    delete '/delete/pets/:id' do 
-      begin
-          # remove = JSON.parse(request.body.read) 
-          pet = Pet.find(params[:id])
-          pet.destroy
-          "Deleted!"
-          status 204
+   delete '/delete/pets/:id' do 
+        begin
+            # remove = JSON.parse(request.body.read) 
+            pet = Pet.find(params[:id])
+            pet.destroy
+            # status 204 
+            { success: true, message: "Removed successfully"  }.to_json
 
-      rescue => e 
-          { error: e.message}
-      end 
-  end
+        rescue => e 
+            { error: e.message}
+        end 
+    end
 
 end
 
