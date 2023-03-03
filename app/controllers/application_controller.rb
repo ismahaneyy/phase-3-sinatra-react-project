@@ -13,6 +13,7 @@ class ApplicationController < AppController
       new_user.to_json
     end
   end
+  
 
   post '/login' do
     request.body.rewind
@@ -28,33 +29,39 @@ class ApplicationController < AppController
       { success: false, error: 'Invalid credentials' }.to_json
     end
   end
-
-    post '/pets/create' do
-      begin
-          new_pet = Pet.create(JSON.parse(request.body.read))
-          json_response(code: 201, data: new_pet)
-      rescue => e 
-          json_response(code: 422, data: e.message)
-      end 
-  end
-
-  get '/users/:user_id/pets' do
-    user = User.find(params[:user_id])
-    user.pets.to_json 
-  end
-
-  get '/pets' do
-    Pet.all.to_json
-  end
-
   
-  post '/pets/search' do
-      body = JSON.parse(request.body.read)
-      pets = Pet.where('name LIKE ? OR breed LIKE ?', "%#{body['query']}%", "%#{body['query']}%")
-      pets.to_json
-  end 
 
-  put '/update/pets/:id' do
+# Pet routes
+# it works
+post '/pets/create' do
+    begin
+        new_pet = Pet.create(JSON.parse(request.body.read))
+        json_response(code: 201, data: new_pet)
+    rescue => e 
+        json_response(code: 422, data: e.message)
+    end 
+end
+
+# technically works
+get '/users/:user_id/pets' do
+  user = User.find(params[:user_id])
+  user.pets.to_json 
+end
+
+# it works
+get '/pets' do
+  Pet.all.to_json
+end
+
+# it works
+post '/pets/search' do
+    body = JSON.parse(request.body.read)
+    pets = Pet.where('name LIKE ? OR breed LIKE ?', "%#{body['query']}%", "%#{body['query']}%")
+    pets.to_json
+end 
+
+# it works
+put '/update/pets/:id' do
     begin 
         data = JSON.parse(request.body.read)
         pet = Pet.find(params[:id])
@@ -63,20 +70,20 @@ class ApplicationController < AppController
     rescue => e 
         { error: e.message}
     end 
+end
 
-   delete '/delete/pets/:id' do 
-        begin
-            # remove = JSON.parse(request.body.read) 
-            pet = Pet.find(params[:id])
-            pet.destroy
-            # status 204 
-            { success: true, message: "Removed successfully"  }.to_json
+# it works
+delete '/delete/pets/:id' do 
+    begin
+        # remove = JSON.parse(request.body.read) 
+        pet = Pet.find(params[:id])
+        pet.destroy
+        # status 204 
+        { success: true, message: "Removed successfully"  }.to_json
 
-        rescue => e 
-            { error: e.message}
-        end 
-    end
-
+    rescue => e 
+        { error: e.message}
+    end 
 end
 
 end
