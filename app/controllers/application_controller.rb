@@ -51,11 +51,15 @@ class ApplicationController < AppController
       pets.to_json
   end
   # it works
-  put "/pets/:id" do 
-    new_details = JSON.parse(request.body.read)
-        find_pet = Pet.find(params[:id])
-        find_pet.update(data)
-        find_pet.to_json
+  put '/update/pets/:id' do
+      begin
+          data = JSON.parse(request.body.read)
+          pet = Pet.find(params[:id])
+          pet.update(data)
+          pet.to_json
+      rescue => e
+          { error: e.message}
+      end
   end
   # it works
   delete '/delete/pets/:id' do
