@@ -1,4 +1,5 @@
 require 'rack/cors'
+require 'rack/contrib'
 require_relative "./config/environment"
 
 
