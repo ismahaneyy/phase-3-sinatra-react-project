@@ -20,7 +20,7 @@ class ApplicationController < Sinatra::Base
     #Searches through the list of all the pets and returns the pets that match
     post '/pets/search_all' do
       search_request = JSON.parse(request.body.read)
-      search_response = Pet.where('name LIKE ? OR breed LIKE ?', "%#{body['query']}%", "%#{body['query']}%")
+      search_response = Pet.where('name LIKE ? OR breed LIKE ?', "%#{search_request['query']}%", "%#{search_request['query']}%")
       search_response.to_json
     end 
 
@@ -39,8 +39,9 @@ class ApplicationController < Sinatra::Base
     end
 
       #adds a new pet into the database
-  post "/pets" do
+  post "/pet" do
     new_pet = Pet.create(JSON.parse(request.body.read))
+    new_pet.to_json
   end
 
     #removes a pet from the database
@@ -52,12 +53,13 @@ class ApplicationController < Sinatra::Base
   put "/pets/:id" do 
     new_details = JSON.parse(request.body.read)
         find_pet = Pet.find(params[:id])
-        find_pet.update(data)
+        find_pet.update(new_details)
         find_pet.to_json
   end
 
   post "/user" do
     new_user = User.create(JSON.parse(request.body.read))
+    new_user.to_json
   end
 
 end
