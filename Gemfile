@@ -4,6 +4,8 @@ ruby File.read('.ruby-version').strip
 
 gem 'sinatra', '~> 3.0', '>= 3.0.5'
 
+gem 'rack-cors'
+
 gem 'sinatra-cross_origin', '~> 0.4.0'
 
 gem 'activerecord', '~> 7.0', '>= 7.0.4.2'
