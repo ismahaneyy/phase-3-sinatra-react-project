@@ -1,16 +1,9 @@
-class ApplicationController < PetsController
+class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
 
-  # config.middleware.insert_before 0, Rack::Cors do
-  #   allow do
-  #     origins '*'
-  #     resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options]
-  #   end
-  # end
-
-  # configure do 
-  #   enable :cross_origin
-  # end
+  configure do 
+    enable :cross_origin
+  end
 
     # returns all the users
   get "/" do 
@@ -66,4 +59,5 @@ class ApplicationController < PetsController
   post "/user" do
     new_user = User.create(JSON.parse(request.body.read))
   end
+
 end
