@@ -16,6 +16,8 @@ gem 'sinatra-activerecord', '~> 2.0', '>= 2.0.26'
 
 gem 'bcrypt', '~> 3.1', '>= 3.1.18'
 
+gem 'rack-cors'
+
 gem 'puma', '~> 6.1'
 
 gem 'require_all', '~> 3.0'
@@ -32,3 +34,4 @@ group :test do
     # gem 'rspec-json_expectations', '~> 2.2'
     # gem 'faker'
 end
+

@@ -1,4 +1,5 @@
 require_relative "./config/environment"
+require 'rack/cors'
 
 # Allow CORS (Cross-Origin Resource Sharing) requests
 use Rack::Cors do
