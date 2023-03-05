@@ -1,4 +1,4 @@
-class ApplicationController < Sinatra::Base 
+class ApplicationController < PetsController
   set :default_content_type, 'application/json'
 
   # config.middleware.insert_before 0, Rack::Cors do
