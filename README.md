@@ -1,5 +1,8 @@
 # Phase 3 Project Guidelines
 
+- You can access the deployed site by visiting :
+  - https://ismahan-sinatra-backend.onrender.com
+  
 ## Requirements
 ### BDD
 
