@@ -1,22 +1,7 @@
 # Phase 3 Project Guidelines
 
-## Learning Goals
-
-- Build a web basic API with Sinatra and Active Record to support a React
-  frontend
-
-
-## Introduction
-
-Congrats on getting through all the material for Phase 3! Now's the time to put
-it all together and build something from scratch to reinforce what you know and
-expand your horizons.
-
-The focus of this project is **building a Sinatra API backend** that uses
-**Active Record** to access and persist data in a database, which will be used
-by a separate **React frontend** that interacts with the database via the API.
-
 ## Requirements
+### BDD
 
 For this project, you must:
 
@@ -44,96 +29,69 @@ For this project, you must:
   should NOT be relying on filtering front end state or a separate fetch request to
   retrieve related data.
 
-For example, build a todo list application with a React frontend interface and a
-Sinatra backend API, where a user can:
+## Description
+- This application uses Ruby language
 
-- **Create** a new todo
-- **Read** a list of all todos
-- **Update** an individual todo
-- **Delete** a todo
+- It has an app folder that contains controller(application_cobtroller) that makes model data available to the view, so it can display that data to the user, and it saves or updates user data to the model and models folder that has pets file which has a macro and same  for users file
 
-A `Todo` can be tagged with a `Category`, so that each todo _belongs to_ a
-category and each category _has many_ todos.
+- It has a config folder that allows a user to specify the various settings that you want to pass down to all other components.
 
-## Getting Started
+- it has a db folder that holds the migration. It also has a seeds folder that bootstraps the database, (production and development).
 
-### Backend Setup
+- The config.ru provides a minimal interface between web servers that support Ruby and Ruby frameworks.
 
-This repository has all the starter code needed to get a Sinatra backend up and
-running. [**Fork and clone**][fork link] this repository to get started. Then, run
-`bundle install` to install the gems.
+- The gemfile stores the neccessary gems
 
-**Important**: Be sure you fork a copy of the repo into your GitHub account
-before cloning it. You can do this by using the link above or by clicking the
-"Octocat" button at the top of this page, then clicking "Fork" in the upper
-right corner of the repo page.
+- It has Rakefile that allows a user to define a list of other tasks that must run before the current task.
 
-[fork link]: https://github.com/learn-co-curriculum/phase-3-sinatra-react-project/fork
 
-The `app/controllers/application_controller.rb` file has an example GET route
-handler. Replace this route with routes for your project.
+## REQUIREMENTS FOR USE
 
-You can start your server with:
+### Prerequisites
 
-```console
-$ bundle exec rake server
-```
+- For you to use the content on this repo ensure you have the following:
 
-This will run your server on port
-[http://localhost:9292](http://localhost:9292).
+    - node v14.17.4 and above
 
-### Frontend Setup
+    - A computer that runs on either of the following; (Linux, Mac OS and Windows)
 
-Your backend and your frontend should be in **two different repositories**.
+    - nodejs 9.0+
 
-Create a new repository in a **separate folder** with a React app for your
-frontend. To do this, `cd` out of the backend project directory, and use
-[create-react-app][] to generate the necessary code for your React frontend:
+    - npm 6.14.14 and above
 
-```console
-$ npx create-react-app my-app-frontend
-```
+    - Vue 2.6.11
 
-After creating the project locally, you should also
-[create a repository on GitHub][create repo] to host your repo and help
-collaborate, if you're working with a partner.
+    -  Status:
+        - maintained and is currently under development
 
-### Fetch Example
+    - Version: - v0.1.0
 
-Your React app should make fetch requests to your Sinatra backend! Here's an
-example:
+    - Setup instructions
+        
+      - To use this repository on your machine requires some simple steps:
 
-```js
-fetch("http://localhost:9292/test")
-  .then((r) => r.json())
-  .then((data) => console.log(data));
-```
+            - Open a terminal / command line interface on your computer
 
-## Project Tips
+      - Clone the repo by using the following to create a copy on your local machine: "https://github.com/ismahaneyy/phase-3-sinatra-react-project"
 
-- This project is intended to focus more on the backend than the frontend, so
-  try and keep the React side of things relatively simple. Focus on working with
-  Active Record and performing CRUD actions. What are some interesting queries you can write? What kinds of questions can you ask of your data?
-- Once you have a project idea, come up with a domain model and decide what
-  relationships exist between the models in your application. Use a tool like
-  [dbdiagram.io][] to help visualize your models.
-- Decide on your API endpoints. What data should they return? What kind of CRUD
-  action should they perform? What data do they need from the client?
-- Use [Postman][postman download] to test your endpoints.
-- Use `binding.pry` to debug your requests on the server. It's very helpful to use a
-  `binding.pry` in your controller within a route to see what `params` are being
-  sent.
-- Use the [Network Tab in the Dev Tools][network tab] in the frontend to debug
-  your requests.
+        - Change directory to the repo folder:
 
-## Resources
+            - cd phase-3-sinatra-react-project
 
-- [create-react-app][]
-- [dbdiagram.io][]
-- [Postman][postman download]
+        - Open it in Visual Studio Code
 
-[create-react-app]: https://create-react-app.dev/docs/getting-started
-[create repo]: https://docs.github.com/en/get-started/quickstart/create-a-repo
-[dbdiagram.io]: https://dbdiagram.io/
-[postman download]: https://www.postman.com/downloads/
-[network tab]: https://developer.chrome.com/docs/devtools/network/
+            - code .
+
+        - npm install to install all the dependancies
+
+        - Version: v0.1.0
+
+        - Node Version: 14.17.4 and above
+
+- Authors:
+
+    - [Ismahan Abdirizak] (https://github.com/ismahaneyy)
+
+- License
+
+    - This project is licensed under the MIT License                
