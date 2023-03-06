@@ -25,12 +25,12 @@ class ApplicationController < Sinatra::Base
     end 
 
       #Searches through a list of all the pets of a speific user and returns the pets that match
-  post '/pets/search/:username' do
-    search_request = JSON.parse(request.body.read)
-    my_pets = User.find_by(username:params[:username])
-    search_response = my_pets.pets.where('name LIKE ? OR breed LIKE ?', "%#{body['query']}%", "%#{body['query']}%")
-    search_response.to_json
-  end 
+      post '/pets/search/:username' do
+        search_request = JSON.parse(request.body.read)
+        my_pets = User.find_by(username:params[:username])
+        search_response = my_pets.pets.where('name LIKE ? OR breed LIKE ?', "%#{body['query']}%", "%#{body['query']}%")
+        search_response.to_json
+      end 
 
      #returns a list of all the pets in the database
      get "/pets"  do
